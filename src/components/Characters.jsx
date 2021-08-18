@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Container, Row, Card, Col, Image } from 'react-bootstrap'
 
 const Characters = () => {
   const [characters, setCharacters] = useState([])
@@ -10,11 +11,24 @@ const Characters = () => {
   }, [])
 
   return (
-    <div className='Characters'>
-      {characters.map((character) => (
-        <h2>{character.name}</h2>
-      ))}
-    </div>
+    <Container>
+      <Row>
+        {characters.map((character) => (
+          <Col xs={3}>
+            <Card className='mb-3'>
+              <Card.Body>
+                <Card.Title>
+                  <Image src={character.image} thumbnail />
+                </Card.Title>
+                <Card.Text>
+                  <h2>{character.name}</h2>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   )
 }
 
